@@ -2,8 +2,6 @@ name: Build to Staging branch
 run-name: Build to stage / version ${{ GITHUB_RUN_NUMBER }}-STG
 on:
   push:
-    branches:
-      - master
 
 jobs:
 
