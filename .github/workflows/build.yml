@@ -3,10 +3,13 @@ name: Build to Staging branch
 on:
   push:
 
+env:
+  IMAGE_NAME: manutdidentitysite
+
 jobs:
 
   build-and-push:
-    name: Builds the code from staging branch
+    name: Builds the code and pushes a docker image to ECR
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
@@ -17,7 +20,19 @@ jobs:
       - name: Get current version
         id: version
         run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"
-        
-run-name: Build to stage / version ${{ GITHUB_RUN_NUMBER }}        
 
       
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.STADION_BOT_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.current }}
+          release_name: Release v${{ steps.version.outputs.current }}
+          body: |
+            TBC - Update 
+          draft: false
+          prerelease: true
+
+run-name: Build code from saging branch / version ${{ steps.version.outputs.current }}
