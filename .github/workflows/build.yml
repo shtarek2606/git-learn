@@ -33,4 +33,4 @@ jobs:
           draft: false
           prerelease: true
 
-run-name: Build code from saging branch / version ${{ env.version.outputs.current }}
+
