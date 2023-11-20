@@ -5,7 +5,7 @@ on:
 
 env:
   build-number: ${{github.run_number}}
-
+run-name: Build code from staging branch / version ${{ github.env.build-number }}
 jobs:
 
   build-and-push:
@@ -22,4 +22,4 @@ jobs:
         id: version
         run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"      
 
-run-name: Build code from staging branch / version ${{ steps.version.outputs.current }}
+
