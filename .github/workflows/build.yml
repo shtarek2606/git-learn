@@ -4,7 +4,7 @@ on:
   push:
 
 env:
-  build-number: ${{github.run_number}}
+  build-number: $(date +'%Y.%m.%d').${{github.run_number}}
 
 jobs:
 
