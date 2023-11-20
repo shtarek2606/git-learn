@@ -4,7 +4,9 @@ on:
   push:
 
 env:
-  Release Name: manutdidentitysite
+   - name: Get current version
+     id: version
+     run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"
 
 jobs:
 
@@ -16,10 +18,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Get current version
-        id: version
-        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"
 
       
       - name: Create Release
@@ -35,4 +33,4 @@ jobs:
           draft: false
           prerelease: true
 
-run-name: Build code from saging branch / version ${{ steps.version.outputs.current }}
+run-name: Build code from saging branch / version ${{ env.version.outputs.current }}
