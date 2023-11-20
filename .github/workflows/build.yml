@@ -3,10 +3,6 @@ name: Build to Staging branch
 on:
   push:
 
-env:
-   - name: Get current version
-     id: version
-     run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"
 
 jobs:
 
