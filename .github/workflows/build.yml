@@ -3,6 +3,8 @@ name: Build to Staging branch
 on:
   push:
 
+env:
+  build-number: ${{github.run_number}}
 
 jobs:
 
@@ -15,18 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.STADION_BOT_TOKEN }}
-        with:
-          tag_name: ${{ steps.version.outputs.current }}
-          release_name: Release v${{ steps.version.outputs.current }}
-          body: |
-            TBC - Update 
-          draft: false
-          prerelease: true
-
-
+run-name: Build code from saging branch / version ${{ env.build-number }}
