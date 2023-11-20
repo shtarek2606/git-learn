@@ -17,4 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-run-name: Build code from staging branch / version ${{ github.env.build-number }}
+
+      - name: Get current version
+        id: version
+        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"      
+
+run-name: Build code from staging branch / version ${{ steps.version.outputs.current }}
