@@ -17,4 +17,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-run-name: Build code from staging branch / version ${{ rithub.env.build-number }}
+run-name: Build code from staging branch / version ${{ github.env.build-number }}
