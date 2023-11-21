@@ -22,7 +22,7 @@ jobs:
 
       - name: Get current version
         id: version
-        run: echo "{current=$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG}" >> $GITHUB_OUTPUT
+        run: echo "$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG" >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
@@ -30,8 +30,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.version.outputs.current }}
-          release_name: Release v${{ steps.version.outputs.current }}
+          tag_name: ${{ steps.version.outputs.* }}
+          release_name: Release v${{ steps.version.outputs.* }}
           body: |
             TBC - Update 
           draft: false
