@@ -1,11 +1,15 @@
-name: Build to Staging branch
+name: Build
 
 on:
   push:
+    branches:
+      - main
 
 env:
   build-number: ${{github.run_number}}
+  
 run-name: Build code from staging branch / version ${{ github.env.build-number }}
+
 jobs:
 
   build-and-push:
@@ -16,6 +20,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Get current version
+        id: version
+        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER"  
+      
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.STADION_BOT_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.current }}
+          release_name: Release v${{ steps.version.outputs.current }}
+          body: |
+            TBC - Update 
+          draft: false
+          prerelease: true
 
 
       - name: Get current version
