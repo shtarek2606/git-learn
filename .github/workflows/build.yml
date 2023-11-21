@@ -22,7 +22,7 @@ jobs:
 
       - name: Get current version
         id: version
-        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER"      
+        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"      
 
       - name: Create Release
         id: create_release
@@ -37,8 +37,6 @@ jobs:
           draft: false
           prerelease: true
 
-      - name: Get current version
-        id: version
-        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG"      
+   
 
 
