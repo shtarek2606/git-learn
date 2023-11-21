@@ -2,8 +2,7 @@ name: Build
 
 on:
   push:
-    branches:
-      - main
+
 
 env:
   build-number: ${{github.run_number}}
