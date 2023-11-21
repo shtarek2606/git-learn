@@ -22,7 +22,7 @@ jobs:
 
       - name: Get current version
         id: version
-        run: echo "{$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG}"
+        run: echo "{current=$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG}" >> $GITHUB_OUTPUT
 
       - name: Create Release
         id: create_release
