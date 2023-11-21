@@ -20,12 +20,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Get current version
-        id: version
-        run: echo "::set-output name=current::$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER"  
-      
-
-
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.current }}
+          release_name: Release v${{ steps.version.outputs.current }}
+          body: |
+            TBC - Update 
+          draft: false
+          prerelease: true
 
       - name: Get current version
         id: version
