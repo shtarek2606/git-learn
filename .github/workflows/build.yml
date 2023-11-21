@@ -30,8 +30,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.version.outputs.current }}
-          release_name: Release v${{ steps.version.outputs.current }}
+          tag_name: ${{ steps.version.outputs }}
+          release_name: Release v${{ steps.version.outputs }}
           body: |
             TBC - Update 
           draft: false
