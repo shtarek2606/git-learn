@@ -1,0 +1,10 @@
+on:
+  release:
+    types: [prereleased]
+
+name: Deploy to  Dev
+
+jobs:
+  prerelease:
+    name: Deploy to Stadion Dev
+    runs-on: ubuntu-latest
