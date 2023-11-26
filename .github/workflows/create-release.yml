@@ -11,6 +11,6 @@ jobs:
 
     steps:
 
-    - name: Trigger update for the Dev service
+    - name: Trigger update for the Dev services
       run: echo ${GITHUB_REF##*/}
     
