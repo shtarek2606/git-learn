@@ -2,7 +2,7 @@ on:
   release:
     types: [prereleased]
 
-name: Deploy to  Dev
+name: Deploy to Stadion Dev test stage
 
 jobs:
   prerelease:
@@ -11,6 +11,7 @@ jobs:
 
     steps:
 
-    - name: Trigger update for the Dev services
-      run: echo ${GITHUB_REF##*/}
-    
+    - name: Trigger update for the Dev service
+      run: |
+         echo ${GITHUB_REF##*/}
+      
