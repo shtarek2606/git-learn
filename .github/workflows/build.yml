@@ -23,6 +23,9 @@ jobs:
       - name: Get current version
         id: version
         run: echo "current=$(date +'%Y.%m.%d').$GITHUB_RUN_NUMBER-STG" >> $GITHUB_OUTPUT
+      
+      - name: Set output version
+        run: echo "BuildVersion=${{ steps.version.outputs.current }}" >> $GITHUB_ENV
 
       - name: Create Release
         id: create_release
