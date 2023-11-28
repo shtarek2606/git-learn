@@ -39,6 +39,12 @@ jobs:
             TBC - Update 
           draft: false
           prerelease: true
+    
+      - name: Set Release Name and Description
+        run: echo "RELEASE_NAME=Deploy to Stadion Dev #${{ github.run_number }}: Release ${{ steps.version.outputs.current }} prereleased by Stadion-Bot" >> $GITHUB_ENV
+
+      - name: Display Release Information
+        run: echo "Release Information: $RELEASE_NAME"
 
    
 
