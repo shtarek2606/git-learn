@@ -14,3 +14,5 @@ jobs:
     - name: Trigger update for the Dev service
       run: |
          echo ${GITHUB_REF##*/}
+    - name: Set output version
+      run: echo "BuildVersion=${{ steps.version.outputs.current }}" >> $GITHUB_ENV
